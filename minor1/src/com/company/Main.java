@@ -1,34 +1,24 @@
 package com.company;
 import com.google.gson.*;
 
-public class Main {
+
+
+
+public class Main  {
 
     public static void main(String[] args) {
-         var chain1 = new BlockChain();  // user1
-         var chain2 = new BlockChain();  // user 2
+
+         BlockChain chain1 = new BlockChain();
 
 
-        System.out.println("mining block 1 ....");
-         chain1.addBlock(new Block(1, "second block" , chain1.getLatestBlock().hash));
+        var User1 = new User(1 ,chain1);
+        var User2 = new User(2,chain1);
 
-        System.out.println("mining block 1 ....");
-        chain2.addBlock(new Block(1, "second block" , chain1.getLatestBlock().hash));
-
-        System.out.println("mining block 2 ....");
-        chain1.addBlock(new Block(2, "third block" , chain1.getLatestBlock().hash));
-
-        System.out.println("mining block 2 ....");
-        chain2.addBlock(new Block(2, "third block" , chain1.getLatestBlock().hash));
+         User1.start();
 
 
-//        System.out.println(chain1.isChainValid());
 
-        String blockchainJson1 = new GsonBuilder().setPrettyPrinting().create().toJson(chain1.blockchain);
-        String blockchainJson2 = new GsonBuilder().setPrettyPrinting().create().toJson(chain1.blockchain);
-
-
-        System.out.println(blockchainJson1);
-        System.out.println(blockchainJson2);
 
     }
+
 }

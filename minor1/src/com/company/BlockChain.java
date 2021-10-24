@@ -11,7 +11,7 @@ public class BlockChain {
     }
 
     public Block createGenesisBlock() {
-        return new Block(0, "genesis block", "0");
+        return new Block(1, "genesis block", "0");
     }
 
     public Block getLatestBlock() {
@@ -21,13 +21,15 @@ public class BlockChain {
 
 
     public int getLength() {
-        return blockchain.size() - 1;
+
+        return this.blockchain.size() ;
     }
 
     public void addBlock(Block newBlock) {
         newBlock.previousHash = getLatestBlock().hash;
         newBlock.mineBlock(this.difficulty);
         this.blockchain.add(newBlock);
+
     }
 
     public Boolean isChainValid() {
